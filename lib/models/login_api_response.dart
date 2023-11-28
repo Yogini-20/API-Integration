@@ -1,4 +1,6 @@
 class LoginResponse {
+  String? id;
+  String? emailId;
   String? orgname;
   String? name;
   String? phoneNumber;
@@ -6,9 +8,17 @@ class LoginResponse {
   String? message;
 
   LoginResponse(
-      {this.orgname, this.name, this.phoneNumber, this.status, this.message});
+      {this.id,
+        this.emailId,
+        this.orgname,
+        this.name,
+        this.phoneNumber,
+        this.status,
+        this.message});
 
   LoginResponse.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    emailId = json['emailId'];
     orgname = json['orgname'];
     name = json['name'];
     phoneNumber = json['phoneNumber'];
@@ -17,12 +27,14 @@ class LoginResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['orgname'] = orgname;
-    data['name'] = name;
-    data['phoneNumber'] = phoneNumber;
-    data['status'] = status;
-    data['message'] = message;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['emailId'] = this.emailId;
+    data['orgname'] = this.orgname;
+    data['name'] = this.name;
+    data['phoneNumber'] = this.phoneNumber;
+    data['status'] = this.status;
+    data['message'] = this.message;
     return data;
   }
 }
